@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Form</title>
+<link rel="stylesheet" href="" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" href="" th:href="@{/css/mobile.css}" />	
+</head>
+<body>
+
+
+	<div class="container">
+		<div class="row mt-5">
+			<div class="col-md-6 offset-md-3">
+			
+			<img class="profile" alt="" src="" th:src="@{/image/c2.png}" />
+
+				<form th:action="@{/process}" method="post" th:object="${loginData}">
+				
+				<h1 class="text-center">Signup Here</h1>
+				
+					<div class="form-group">
+						<label for="exampleInputEmail1">Username</label>
+						
+						
+						 <input	type="text"
+						 		name="userName"
+						 		class="form-control " 
+						 		
+						 		th:value="${loginData.userName}"
+						 		th:classappend="${#fields.hasErrors('userName')?'is-invalid':''}"
+						 		
+						 		id="exampleInputEmail1"
+								aria-describedby="emailHelp"> 
+								
+								<div th:each="e : ${#fields.errors('userName')}" th:text=${e} 
+									 id="validationServer03Feedback" class="invalid-feedback">
+        						
+      							</div>
+								
+								
+								
+					</div>
+					
+					<div class="form-group">
+						<label for="exampleInputPassword1">Email</label>
+						
+						 <input	type="email"
+						 		name="email" 
+						 		
+						 		th:value="${loginData.email}"
+						 		th:classappend="${#fields.hasErrors('email')?'is-invalid':''}"
+						 		
+						 		class="form-control" 
+						 		id="exampleInputPassword1">
+						 		
+						 		<div th:each="e : ${#fields.errors('email')}" th:text=${e} 
+									 class="invalid-feedback">
+        						
+      							</div>
+						 		
+					</div>
+					<div class="form-group form-check">
+						  
+						<input	th:classappend="${#fields.hasErrors('agreed')?'is-invalid':''}"
+								name="agreed"
+								type="checkbox" 
+								class="form-check-input" 
+								id="exampleCheck1">
+								
+						<label  class="form-check-label" for="exampleCheck1">Agree Term and Condition</label>
+										
+						 
+						 <div th:each="e : ${#fields.errors('agreed')}" th:text=${e} 
+							  class="invalid-feedback">
+        						
+      					 </div>
+						 
+					</div>
+					
+					<button type="submit" class="btn btn-primary">Submit</button>
+				
+				</form>
+
+			</div>
+		</div>
+	</div>
+	
+<script src="" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="" th:src="@{/js/popper.min.js}"></script>
+<script src="" th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
+
+</body>
+</html>
